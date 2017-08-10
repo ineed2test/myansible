@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  become: yes
+
+  tasks:
+
+  - user: name=myuser comment="My User" shell=/bin/bash uid=2039 groups=sudo
+
+  - name: Placing key
+    authorized_key: user=myuser key="{{ lookup('file', './public_keys/ulinux2myuser') }}"
