@@ -1,0 +1,19 @@
+--- 
+- hosts: all
+  become: yes
+ 
+  tasks:
+#  - name: create a complete empty file
+#    command: /usr/bin/touch /test/test.conf
+ 
+  - name: create a new file with lineinfile
+    lineinfile: dest=/tmp/test.conf 
+                regexp='^' line=''
+                state=present
+                create=True
+                 
+  - name: add a string to the new file
+    lineinfile: dest=/tmp/test.conf
+                regexp='^'
+                line='Hello, World!'
+                state=present
