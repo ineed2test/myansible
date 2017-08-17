@@ -1,2 +1,4 @@
 [puppet]
-deb02.localdomain
+deb01.localdomain ansible_host=192.168.1.7
+deb02.localdomain ansible_host=192.168.1.8
+deb03.localdomain ansible_host=192.168.1.10

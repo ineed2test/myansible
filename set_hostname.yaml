@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: set hostname
+  src: hostname.j2
+  dest: /etc/hostname
