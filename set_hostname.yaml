@@ -3,5 +3,6 @@
   become: yes
   tasks:
   - name: set hostname
+    template:
       src: hostname.j2
       dest: /etc/hostname
