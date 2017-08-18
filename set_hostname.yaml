@@ -8,5 +8,7 @@
       dest: /etc/hostname
   - name: restart system
     shell: reboot
+    async: 0
+    poll: 0
   - name: waiting for server to come back
     local_action: wait_for host= {{ ansible_default_ipv4.address }} state=started port=22 timeout=30 delay=15 connect=15
