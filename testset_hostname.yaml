@@ -14,5 +14,6 @@
     poll: 0
   - name: waiting for server to come back
     local_action: wait_for host={{ inventory_hostname }} state=started port=22 timeout=30 delay=15 connect=15
+    sudo: no
   - name: install vim
     apt: name=vim state=present update_cache=yes
