@@ -7,7 +7,7 @@
   - name: upgraded because apt:upgrade is not support by ubuntu/debian
     raw: apt-get upgrade
   - name: test apt-get upgrade
-    apt: update_cache=yes upgrade=apt-upgrade
+    apt: update_cache=yes upgrade=yes
   - name: restart system
     shell: sleep 2s && reboot && sleep 30s
     async: 1
