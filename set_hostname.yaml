@@ -7,7 +7,7 @@
       src: hostname.j2
       dest: /etc/hostname
   - name: restart system
-    shell: reboot
+    shell: sleep 2s && reboot
     async: 0
     poll: 0
   - name: waiting for server to come back
