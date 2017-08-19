@@ -2,8 +2,8 @@
 - hosts: all
   become: yes
   tasks:
-  - name: install vim
-    apt: name=vim state=present update_cache=yes
+  - name: install aptitude
+    apt: name=aptitude state=present update_cache=yes
   - name: upgraded because apt:upgrade is not support by ubuntu/debian
     raw: apt-get upgrade
   - name: test apt-get upgrade
