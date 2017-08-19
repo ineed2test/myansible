@@ -10,7 +10,7 @@
     apt: update_cache=yes upgrade=yes
   - name: restart system
     shell: sleep 2s && reboot && sleep 30s
-    async: 1
+    async: 0
     poll: 0
   - name: waiting for server to come back
     sudo: no
