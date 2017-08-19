@@ -2,6 +2,8 @@
 - hosts: all
   become: yes
   tasks:
+  - name: install aptitute
+    apt: name=aptitute state=present update_cache=yes
   - name: upgrade
     apt:
       upgrade: "yes"
