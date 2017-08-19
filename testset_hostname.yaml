@@ -8,13 +8,31 @@
     raw: apt-get upgrade
   - name: test apt-get upgrade
     apt: update_cache=yes upgrade=yes
-  - name: restart system
+#  - name: restart system
 #    shell: sleep 2s && reboot && sleep 30s
-    shell: sleep 2 && shutdown -r now
-    async: 0
-    poll: 0
-  - name: waiting for server to come back
-#    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 timeout=30 delay=15 connect=45
-    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 delay=30 timeout=300 connect_timeout=15
+#    shell: sleep 2 && shutdown -r now
+#    async: 0
+#    poll: 0
+   - name: Execute reboot when kernel has changed
+     shell: sleep 5 && reboot
+     async: 1
+     ignore_errors: true
+     register: reboot
+#  - name: waiting for server to come back
+##    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 timeout=30 delay=15 connect=45
+#    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 delay=30 timeout=300 connect_timeout=15
+   - name: Wait for servers reboot task to execute
+     pause:
+     seconds: 40
+     when: reboot is defined
+   - name: Wait for provisioned server
+     delegate_to: localhost
+      wait_for:
+       host: "{{ inventory_hostname }}"
+       port: 22
+       state: started
+       timeout: 300
+       connect_timeout: 20
+      when: reboot is defined
   - name: install vim
     apt: name=vim state=present update_cache=yes
