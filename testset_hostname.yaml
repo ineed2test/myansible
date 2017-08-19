@@ -3,10 +3,9 @@
   become: yes
   tasks:
   - name: install aptitute
-    apt: name=aptitute state=present update_cache=yes
+    apt: name=vim state=present update_cache=yes
   - name: upgrade
-    apt:
-      upgrade: "yes"
+    apt: upgrade=yes
   - name: restart system
     shell: sleep 2s && reboot && sleep 30s
     async: 1
