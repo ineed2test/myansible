@@ -4,7 +4,7 @@
   tasks:
   - name: upgrade
     apt:
-      upgrade: yes
+      upgrade: "yes"
   - name: restart system
     shell: sleep 2s && reboot && sleep 30s
     async: 1
