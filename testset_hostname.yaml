@@ -28,3 +28,7 @@
     when: reboot is defined
   - name: install vim
     apt: name=vim state=present update_cache=yes
+# important
+# playbook command
+# ansible-playbook --user root -i data/myansible/inventory data/myansible/testset_hostname.yaml -l deb03.localdomain -c paramiko -vvvv
+# the inventory settings must be in /etc/ansible/hosts
