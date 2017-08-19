@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  become: yes
+
+  tasks:
+
+  - name: Placing key
+    authorized_key: user=root key="{{ lookup('file', './public_keys/ulinux2myuser') }}"
