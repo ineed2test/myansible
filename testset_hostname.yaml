@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-  - name: install aptitute
+  - name: install vim
     apt: name=vim state=present update_cache=yes
   - name: upgrade
     apt: upgrade=yes
