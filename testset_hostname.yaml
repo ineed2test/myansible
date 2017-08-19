@@ -5,7 +5,7 @@
   - name: install vim
     apt: name=vim state=present update_cache=yes
   - name: upgraded
-    apt: update_cache=yes upgrade=yes
+    raw: apt-get upgrade
   - name: restart system
     shell: sleep 2s && reboot && sleep 30s
     async: 1
