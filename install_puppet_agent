@@ -1,6 +1,5 @@
 ---
 - include: set_hostname.yaml
-- include: set_hosts_from_inventorylist_to_etc_hosts.yaml
 - hosts: all
   become: yes
   tasks:
