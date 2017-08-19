@@ -23,7 +23,7 @@
 #    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 delay=30 timeout=300 connect_timeout=15
   - name: Wait for servers reboot task to execute
     pause:
-     seconds: 40
+     seconds: 60
     when: reboot is defined
   - name: Wait for provisioned server
     delegate_to: localhost
