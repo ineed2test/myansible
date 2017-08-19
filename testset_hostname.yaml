@@ -10,10 +10,11 @@
     apt: update_cache=yes upgrade=yes
   - name: restart system
 #    shell: sleep 2s && reboot && sleep 30s
-    shell: sleep 2 && shutdown -r now "Ansible package updates triggered"
-    async: 0
+    shell: sleep 2 && shutdown -r now
+    async: 1
     poll: 0
   - name: waiting for server to come back
-    local_action: wait_for host={{ inventory_hostname }} state=started port=22 timeout=30 delay=15 connect=45
+#    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 timeout=30 delay=15 connect=45
+    local_action: wait_for host={{ ansible_ssh_host }} state=started port=22 delay=30 timeout=300 connect_timeout=15
   - name: install vim
     apt: name=vim state=present update_cache=yes
