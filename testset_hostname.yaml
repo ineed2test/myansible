@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: yes
+  sudo: false
   tasks:
   - name: install aptitude
     apt: name=aptitude state=present update_cache=yes
