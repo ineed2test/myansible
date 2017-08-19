@@ -6,10 +6,35 @@
     template:
       src: hostname.j2
       dest: /etc/hostname
-  - name: restart system
-    shell: sleep 2s && reboot && sleep 30s
-    async: 1
-    poll: 0
-  - name: waiting for server to come back
-    become: false
-    local_action: wait_for host= {{ inventory_hostname }} state=started port=22 timeout=30 delay=15 connect=15
+#  - name: restart system
+#    shell: sleep 2s && reboot && sleep 30s
+#    async: 1
+#    poll: 0
+#  - name: waiting for server to come back
+#    become: false
+#    local_action: wait_for host= {{ inventory_hostname }} state=started port=22 timeout=30 delay=15 connect=15
+
+   - name: Execute reboot when kernel has changed
+     shell: sleep 5 && reboot
+     async: 1
+     ignore_errors: true
+     register: reboot
+   - name: Wait for servers reboot task to execute
+     pause:
+      seconds: 60
+     when: reboot is defined
+   - name: Wait for provisioned server
+     delegate_to: localhost
+     wait_for:
+      host: "{{ inventory_hostname }}"
+      port: 22
+      state: started
+      timeout: 300
+      connect_timeout: 20
+     when: reboot is defined
+   - name: install vim
+     apt: name=vim state=present update_cache=yes
+ # important
+ # playbook command
+ # ansible-playbook --user root -i data/myansible/inventory data/myansible/testset_hostname.yaml -l deb03.localdomain -c paramiko -vvvv
+ # the inventory settings must be in /etc/ansible/hosts
