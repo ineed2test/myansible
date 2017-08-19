@@ -4,7 +4,7 @@
   tasks:
   - name: install aptitude
     apt: name=aptitude state=present update_cache=yes
-  - name: upgraded because apt:upgrade is not support by ubuntu/debian
+  - name: upgraded test a other method
     raw: apt-get upgrade
   - name: test apt-get upgrade
     apt: update_cache=yes upgrade=yes
