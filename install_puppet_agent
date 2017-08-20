@@ -7,7 +7,7 @@
 #        apt:
 #          deb: "http://apt.puppetlabs.com/puppet-release-{{ ansible_distribution_release }}.deb"
       - name: Install PuppetLabs release DEB for Debian derivates
-        apt: pkg=puppet state={{ item }} update_cache=yes
+        apt: pkg=puppet state=latest update_cache=yes
         with_items:
         - "http://apt.puppetlabs.com/puppet-release-{{ ansible_distribution_release }}.deb"
         when: ansible_os_family == 'Debian'
