@@ -5,7 +5,7 @@
   tasks:
       - name: Install puppetlabs repositories
         apt:
-          deb: "http://apt.puppetlabs.com/puppetlabs-release-{{ ansible_distribution_release }}.deb"
+          deb: "http://apt.puppetlabs.com/puppet-release-{{ ansible_distribution_release }}.deb"
       - name: Install puppets correct version
         apt: name=puppet state=present update_cache=yes
       - name: Render puppet configuration file
