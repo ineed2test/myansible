@@ -10,3 +10,6 @@
         apt: name=puppet state=present update_cache=yes
       - name: Render puppet configuration file
         template: dest=/etc/puppet/puppet.conf src=puppet.conf.j2
+
+# # important
+  # playbook command with sudo
