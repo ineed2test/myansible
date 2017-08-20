@@ -15,7 +15,7 @@
     register: reboot
   - name: Wait for servers reboot task to execute
     pause:
-     seconds: 60
+     seconds: 80
     when: reboot is defined
   - name: Wait for provisioned server
     delegate_to: localhost
@@ -24,7 +24,7 @@
      port: 22
      state: started
      timeout: 300
-     connect_timeout: 20
+     connect_timeout: 40
     when: reboot is defined
   - name: install vim
     apt: name=vim state=present update_cache=yes
