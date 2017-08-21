@@ -3,4 +3,4 @@
   become: yes
   tasks:
   lineinline:
-    dest=/etc/hosts regexp=deb01.localdomain line="192.168.1.10 deb01.localdomain" backrefs=no state=present
+    dest=/etc/hosts regexp='deb01.localdomain' line="192.168.1.10 deb01.localdomain" backrefs=no state=present
