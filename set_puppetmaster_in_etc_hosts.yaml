@@ -4,4 +4,4 @@
   tasks:
   - name: set puppetmaster hostname in /etc/hosts
     lineinfile:
-      dest=/etc/hosts regexp='deb01.localdomain' line="192.168.1.10 deb01.localdomain" backrefs=no state=present
+      dest=/etc/hosts regexp='deb01.localdomain' line="192.168.1.7 deb01.localdomain" backrefs=no state=present
