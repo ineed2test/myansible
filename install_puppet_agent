@@ -6,7 +6,9 @@
       - name: Install puppetlabs repositories
         apt:
 #          deb: "http://apt.puppetlabs.com/puppet-release-{{ ansible_distribution_release }}.deb"
-           deb: "/root/puppet-release-stretch.deb"
+# it doesn't work
+           shell: wget http://apt.puppetlabs.com/puppet-release-{{ ansible_distribution_release }}.deb -O /tmp/puppet-release-{{ ansible_distribution_release }}.deb
+           deb: "/tmp/puppet-release-stretch.deb"
 #      - name: Install PuppetLabs release DEB for Debian derivates
 #        apt: pkg=puppet state=latest update_cache=yes
 #        with_items:
