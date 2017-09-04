@@ -2,10 +2,20 @@
 - hosts: all
   become: yes
   tasks:
+   - name: verify is the hostvars[item].ansible_default_ipv4.address is set ?
+     debug: var=hostvars[item]['ansible_ssh_host'] 
+#     debug: var=hostvars[item]['ansible_default_ipv4']['address']
+     with_items: groups['all']
    - name: "Build hosts file"
-     lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
-     when: hostvars[item].ansible_default_ipv4.address is defined
-     with_items: groups['puppet-master']
+#     lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
+     lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item]['ansible_ssh_host'] }} {{item}}" state=present
+#     lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{item}}" state=present
+     when: hostvars[item]['ansible_ssh_host']
+#     when: "hostvars[item]['ansible_default_ipv4'] is defined"
+#     with_items: groups['puppet-master']
+     with_items: groups['puppet-client']
+
+
 
 # it's a playbook to set the puppet master to the puppet clients
 # playbook commands

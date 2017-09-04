@@ -2,7 +2,7 @@
 - hosts: all
   become: yes
   tasks:
-  - name: set hostname
+  - name: set hostname. the hostname is {{inventory_hostname}}
     template:
       src: hostname.j2
       dest: /etc/hostname
