@@ -24,6 +24,7 @@
       - name: Render puppet configuration file
         template: dest=/etc/puppet/puppet.conf src=puppet.conf.j2
 - include: set_hosts_from_inventorylist_to_etc_hosts.yaml
+- include: add_authorized_key_4_root.yaml
 
 # # important
   # playbook command with sudo
