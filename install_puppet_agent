@@ -25,6 +25,7 @@
         template: dest=/etc/puppet/puppet.conf src=puppet.conf.j2
 - include: set_hosts_from_inventorylist_to_etc_hosts.yaml
 - include: add_authorized_key_4_root.yaml
+- include: set_hostname_to_etc_hosts.yaml
 
 # # important
   # playbook command with sudo
