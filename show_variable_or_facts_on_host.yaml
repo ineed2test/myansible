@@ -1,7 +1,7 @@
 ---
-- hosts: all
-  become: yes
-  gather_facts: True
-  tasks:
+
   - name: print variable
-  - debug: var=ansible_distribution
+    hosts: all
+    gather_facts: true
+    tasks:
+    - debug: var=ansible_distribution
