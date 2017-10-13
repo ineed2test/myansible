@@ -1,7 +1,11 @@
+[vagrent]
+testserver01 ansible_host=127.0.0.1 ansible_port=2222 ansible_user=vagrant ansible_private_key_file=/home/ulinux/data/vagrant/.vagrant/machines/default/virtualbox/private_key
 [puppet-client]
-deb02.localdomain ansible_ssh_host=192.168.1.8 ip=192.168.1.8
-deb03.localdomain ansible_ssh_host=192.168.1.10 ip=192.168.1.10
-deb04.localdomain ansible_ssh_host=192.168.1.12 ip=192.168.1.12
+deb02.localdomain ansible_ssh_host=192.168.1.8 ip=192.168.1.8 ansible_connection=paramiko
+deb03.localdomain ansible_ssh_host=192.168.1.10 ip=192.168.1.10 ansible_connection=paramiko
+deb04.localdomain ansible_ssh_host=192.168.1.12 ip=192.168.1.12 ansible_connection=paramiko
+deb05.localdomain ansible_ssh_host=192.168.1.6 ip=192.168.1.6 ansible_connection=paramiko
 
 [puppet-master]
-deb01.localdomain ansible_ssh_host=192.168.1.7
+deb01.localdomain ansible_ssh_host=192.168.1.7 ansible_connection=paramiko
+

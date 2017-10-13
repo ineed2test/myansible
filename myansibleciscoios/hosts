@@ -1,0 +1,2 @@
+[ios_switch]
+ios ansible_host=192.168.1.120 ansible_port=22
