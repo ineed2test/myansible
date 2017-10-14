@@ -1,0 +1,46 @@
+---
+- hosts: ios_switches
+  gather_facts: no
+  tasks:
+  - name: bkup the running config
+    ios_config:
+      backup: true
+      provider:
+        host: 192.168.1.120
+        username: admin
+        password: s3cr3t
+        authorize: true
+        auth_pass: 3n4bl3s3cr3t
+
+  - name: init the static config
+    ios_config:
+      src: files/ios-template.conf
+      provider:
+        host: 192.168.1.120
+        username: admin
+        password: s3cr3t
+        authorize: true
+        auth_pass: 3n4bl3s3cr3t
+    notify: save running config
+
+  - name: set hostname
+    ios_config:
+      lines: hostname {{ inventory_hostname_short }}
+      provider:
+        host: 192.168.1.120
+        username: admin
+        password: s3cr3t
+        authorize: true
+        auth_pass: 3n4bl3s3cr3t
+    notify: save running config
+
+    handlers:
+    - name: save running config
+      ios_config:
+      save: true
+      provider:
+        host: 192.168.1.120
+        username: admin
+        password: s3cr3t
+        authorize: true
+        auth_pass: 3n4bl3s3cr3t
