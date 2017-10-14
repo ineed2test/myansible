@@ -1,2 +1,2 @@
-[ios_switch]
+[ios_switches]
 router1.example.com ansible_host=192.168.1.120 ansible_port=22 net_host=192.168.1.120

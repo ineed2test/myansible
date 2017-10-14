@@ -1,5 +1,5 @@
 ---
-- hosts: ios_switch
+- hosts: ios_switches
   gather_facts: no
   tasks:
   - name: set hostname
