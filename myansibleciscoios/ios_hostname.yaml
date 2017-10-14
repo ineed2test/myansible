@@ -11,4 +11,4 @@
         password: s3cr3t
         authorize: true
         auth_pass: 3n4bl3s3cr3t
-  - debug: msg="Der Variablename ist {{ inventory_hostname }} 
+  - debug: msg="Der Variablename ist {{ inventory_hostname }}"
