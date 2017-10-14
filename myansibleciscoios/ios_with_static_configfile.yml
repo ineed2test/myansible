@@ -37,10 +37,10 @@
     handlers:
     - name: save running config
       ios_config:
-      save: true
-      provider:
-        host: 192.168.1.120
-        username: admin
-        password: s3cr3t
-        authorize: true
-        auth_pass: 3n4bl3s3cr3t
+        save: true
+        provider:
+          host: 192.168.1.120
+          username: admin
+          password: s3cr3t
+          authorize: true
+          auth_pass: 3n4bl3s3cr3t
